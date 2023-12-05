@@ -1,0 +1,7 @@
+Query Update Delete
+
+1.UPDATE supplier SET no_tlp = '082137854060' WHERE id_supplier = '1'
+2.UPDATE pelanggan SET keluhan = 'Sakit Kepala' WHERE id_pelanggan = '1'
+3.UPDATE pelanggan SET alamat = 'Seren' WHERE id_pelanggan = '2'
+4.DELETE FROM supplier WHERE id_supplier = '10'
+5.DELETE FROM karyawan WHERE id_karyawan = '10'

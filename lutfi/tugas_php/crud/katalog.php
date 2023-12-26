@@ -13,10 +13,10 @@ $katalog = mysqli_query($mysqli, 'SELECT * FROM katalog');
 <body>
 
 <center>
-    <a href="index.php">Buku</a> |
-    <a href="penerbit.php">Penerbit</a> |
-    <a href="pengarang.php">Pengarang</a> |
-    <a href="katalog.php">Katalog</a>
+    <a class="btn btn-secondary" href="index.php">Buku</a> 
+    <a class="btn btn-secondary" href="penerbit.php">Penerbit</a> 
+    <a class="btn btn-secondary" href="pengarang.php">Pengarang</a>
+    <a class="btn btn-secondary" href="katalog.php">Katalog</a>
     <hr>
 </center>
 

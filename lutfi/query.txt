@@ -1,0 +1,22 @@
+Query tabel apotek
+
+1. SELECT * FROM `obat` WHERE stok < 20; (menampilkan tabel obat yang dimana memiliki stok kurang dari 20)
+
+2. SELECT nama, jenis, harga FROM obat ( menampilkan semua nama, jenis dan harga obat didalam tabel obat )
+
+3. SELECT * FROM faktur_penjualan WHERE tanggal > '2023-10-10' (menampilkan tabel faktur_supply dimana taggal diatas 2023-10-10 )
+
+4. SELECT kd_penjualan, harga_satuan, jumlah, SUM(total_bayar) AS jumlah_bayar FROM faktur_penjualan WHERE tanggal >= '2023-10-10' AND tanggal <= '2023-12-31' GROUP BY kd_penjualan
+   ( menampilkan kd_penjualan, harga satuan, jumlah dan total bayar dimana pada tanggal lebih dari sama dengan 2023-10-10 dan tanggal kurang dari 2023-12-31 )
+
+5. SELECT * FROM supplier WHERE alamat = 'sutoragan' ( menampilkan tabel supplier yang beralamatkan sutoragan )
+
+6. SELECT jenis_kelamin, usia, keluhan FROM pelanggan WHERE usia >= '30' ( menampilkan jenis_kelamin, usia, keluhan dari tabel pelanggan yang dimana usia lebih samadengan 30 )
+
+7 SELECT nama, jenis_kelamin, status FROM karyawan WHERE status = 'Tetap' ( menampilkan nama, jenis_kelamin, status pada tabel karyawan dimana status karyawan tetap )
+
+8. SELECT nama, jenis, stok, tgl_kadaluwarsa FROM obat WHERE tgl_kadaluwarsa <= '2024-02-01' ( menampilkan nama, jenis, stok dan tanggal kadaluwarsa pada tabel obat yang dimana tgl_kadaluarsa kurang dari sama dengan 2024-02-01 )
+
+9. SELECT nama, jenis_kelamin, usia FROM pelanggan WHERE jenis_kelamin = 'Perempuan' ( menampilkan nama, jenis_kelamin, usia pada tabel pelanggan dimana jenis_kelamin = perempuan )
+
+10. SELECT nama, jenis_kelamin FROM supplier WHERE jenis_kelamin = 'Laki-Laki' ( menampilkan nama dan jenis_kelamin dari tabel supplier dimana meampilkan jenis_kelamin laki-laki )

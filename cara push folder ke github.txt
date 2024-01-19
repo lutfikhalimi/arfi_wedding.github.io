@@ -1,0 +1,189 @@
+1. Buat Folder
+2. Klik Kanan > Open Git Bash Here
+3. git add . (tanda titik itu artinya nambah semua file/folder yang dibuat)
+4. git commit -m "Pesan Commit Nya"
+5. git push/ git push origin HEAD:main (ini ikuti aja yang di layar, tapi sebentar ya kak. Saya coba merge aja biar gak bingung)
+
+
+
+
+git push origin HEAD:main itu untuk masuk ke branch main bukan kak ? kalau semisal mau masuk branch semisal lutfi berarti HEAD:lutfi gitu kak ?
+
+bisa juga, tapi kalo saya sering nya git push origin luthfi gak pakai HEAD lagi.
+
+oh gitu, sudah lumayan paham kak
+
+Jadi kalau punya project yang dikerjain sendiri, langsung push ke main aja kak. Gak usah di buat branch. Kalau pindah laptop pun gampang tinggal di clone/pull aja, gak usah download2 lagi file nya.
+
+kalau clone/pull beda sama dengan mendownload ?
+
+Clone = duplikat, sama seperti download. Biasa ini untuk orang/team member baru.
+
+Pull = ketika tim lain melakukan perubahan, supaya kita ikut update juga wajib melakukan pull. Ini biasanya sudah melakukan clone dahulu.
+
+gitu kak,
+
+owh, berarti clone dulu baru bisa pull ?
+Iya kak, kalau member ada melakukan perubahan dan di push ke repo. Misal saya clone repo laravel-vue nya kk. Terus kk ada menambahkan folder new_project, itu saya harus pull supaya folder new_project nya nampak juga di saya. Dalam artian git ini tidak realtime dalam menangani perubahan, agar tidak crash di user dalam mengembangkan aplikasi kak. Jadi kalo kk ada push apa saja, saya wajib pull kak. Kalo tidak, waktu saya push, terjadi conflict dan kita harus menyesuaikan berdasarkan yang perubahan terbaru.
+
+jika kakak ada waktu nanti atau kapan bisa dicontohkan kak ?
+
+untuk yang clone atau pull kk? iya kak
+
+sebentar saya buat repo dulu,
+boleh kirim username/email github kak?
+
+email : lutfikhalimi11@gmail.com
+username: lutfi khalimi
+
+coba cek ke emailnya kak
+
+-------------------------------------------------
+cara clone, buka git bash 
+ketik :
+git clone https://github.com/aditfreedom/project_kita.git
+
+
+itu sudah saya bantu clone
+sekarang folder nya udah ada
+
+sekarang di saya mau update repo nya dengan nambah file baru. Sebentar ya...
+
+sudah saya push file baru nya ke repo, kk tinggal pull aja. cara nya git pull
+
+langsung di git bash tu kak ?iya kk
+
+oh iya, saya lupa. kita harus masuk ke folder project_kita (repo nya) di git bash masih di folder eduwork
+
+nah ini sudah di project kita, coba ketik ulang git pull kk
+
+coba lihat folder nya, sudah bertambah file nya
+
+nama filenya file_upload ?
+file update
+
+oh iya,
+
+itu yang folder git itu kenapa redup kak ?
+itu file/folder tersembunyi kak, biasanya diawali dengan . diawal. .git itu isinya konfigurasi repo nya kak. itu sudah saya hidden.
+
+tadi dihiden fungsinya buat apa kak ?
+
+Untuk ngecek folder project_kita itu sudah ada di repo github apa belum kk
+
+sudah kak
+iya kk, folde .git itu isinya konfigurasi repo git.
+
+coba kk buka file_update.txt, terus di tutup.
+kemudian pull, dan buka kembali file_update.txt. saya ada push
+
+buka yang di github atau di berkas lokal ?
+berkas lokal kk
+
+oh gitu ya cara kerjanya, ngepulnya itu di foldernya ya, bukan di filenya ?
+Iya kak, folder project_kita yg di berkas lokal itu reponya github. jadi yang di pull repo nya, semua perubahan terjadi di repo.
+
+saya coba nge push ya kak
+boleh kak, sambung aja yg di file update itu. nanti saya pull. kalo udah kk push, perubahannya juga bisa dilihat di github nya (Kan saya jauh ini, jadi kk gak bisa lihat laptop saya)
+
+iya kak, pakainya git push kan ?
+
+Cara push :
+1. git add .
+2. git commit -m "tulis pesan update nya apa"
+3. git push
+
+
+udah saya pull dari sini, masuk tulisannya. Perubahannya bisa di cek di github
+
+oke, tak cek dulu
+
+sudah ada kak
+
+Kira-kira begitu kak konsepnya, jadi gak perlu download2 file php nya lagi ntar. Tinggal clone aja
+
+baik kak, terimakasih penjelasannya , saya jadi cukup paham
+
+Kalau pun nanti kerja di 2 komputer (komputer di gedung A dan komputer di gedung B) tinggal push dan pull saja kak...
+
+iya kak, bisa dimengerti
+
+Ada yang mau ditanyakan lagi kak?
+
+sudah cukup kak, terimakasih sekali untuk penjelasannya, saya jadi dapat ilmu baru.
+
+Baik kak... kalau begitu saya boleh leave kak?
+
+silahkan kak, sekali lagi terimakasih,
+
+besok jika saya ada kesulitan lagi , tanya tanya lagi ya kak ?
+
+Baik kak...
+
+oke
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+atau 
+
+gh repo clone aditfreedom/project_kita (pakai yang ini kak ?
+itu gh typo kan kak ?
+
+gh itu artinya apa kak ?
+github kak, mungkin harus pakai github bash
+
+tekan enter kak
+
+iya kak, kalo gak bisa yang atasnya
+
+di coba aja kak
+
+
+
+ duplikat
+oh iya
+
+
+
+
+
+
+
+Ini sudah saya merge dan kembali ke branch main kak. Untuk upload folder, sepertinya tidak bisa hanya folder kosong saja, harus ada file didalamnya agar nampak di github.
+
+ git commit -m "add folder new_project, add file .txt"
+
+jika mau nambah/hapus file bisa langsung gitu ya kak ?
+
+Bisa kak, yang penting git add . dulu biar git nya tau file apa yang mengalami perubahan/penambahan
+
+kalau semisal ada project yang di kerjakan beberapa orang , yang projrctnya di up ke githab itu prosesnya bagaimana kak ?
+
+Itu tergantung yang megang project nya sih kak
+
+Biasanya :
+1. Repo nya udah ditambahkan anggota yang bisa edit
+2. Setiap member team cuma bisa akses branch yang ditentukan
+3. setiap member push branch nya masing2 ke main karena main itu branch utama (produksi) nya
+
+
+
+misal saya handle file tampilan admin, saya cuma dikasih akses file admin aja oleh master (yang punya repo). nanti saya hanya bisa push file itu saja. singkat nya begitu kak.
+
+oh begitu, hanya mengerjakan yang bisa di akses aja.
+Iya kak, kecuali yang punya repo kasih akses full untuk semua member nya. itu bisa juga, dan itu bisa jadi conflict kak krn banyak yg ngedit file yang sama oleh member team. Makanya banyak yang model kasih akses tertentu aja
+
+iya, saya sempat mikir begitu, kalau banyak yang akses kan jadi tdk karuan, ternyata bisa dikasih hak akses untuk per member ternyata.
+
+Iya kak, di corporate/startup sistem kerjanya gitu

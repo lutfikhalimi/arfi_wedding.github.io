@@ -2,9 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\Book;
+use App\Models\Books;
 use Faker\Factory as Faker;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class BookSeeder extends Seeder
@@ -17,14 +16,14 @@ class BookSeeder extends Seeder
         $faker = Faker::create();
 
         for ($i = 0; $i < 20; $i++) {
-            $book = new Book();
+            $book = new Books();
 
             $book->isbn = $faker->randomNumber(9);
-            $book->title = $faker->name;
-            $book->year = rand(2010, 2024);
-            $book->publisher_id = rand(21, 40);
-            $book->author_id = rand(1, 20);
-            $book->catalog_id = rand(21, 30);
+            $book->title = $faker->name; // Ubah metode name menjadi sentence
+            $book->year = rand(2010, 2021);
+            $book->publisher_id = rand(1, 5); // Sesuaikan dengan jumlah penerbit yang Anda miliki
+            $book->author_id = rand(1, 10); // Sesuaikan dengan jumlah penulis yang Anda miliki
+            $book->catalog_id = rand(1, 4);
             $book->qty = rand(10, 20);
             $book->price = rand(10000, 20000);
 

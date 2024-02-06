@@ -7,8 +7,13 @@ use Illuminate\Http\Request;
 
 class CatalogController extends Controller
 {
+    public function _construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
+     * @return
      */
     public function index()
     {
@@ -35,7 +40,7 @@ class CatalogController extends Controller
         // $catalog->name = $request->name;
         // $catalog->save();
 
-        //Catalog::create($request->all());
+        Catalog::create($request->all());
 
         return redirect('catalogs');
     }

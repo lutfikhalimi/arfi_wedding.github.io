@@ -7,8 +7,13 @@ use Illuminate\Http\Request;
 
 class PublisherController extends Controller
 {
+    public function _construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
+     * @return
      */
     public function index()
     {

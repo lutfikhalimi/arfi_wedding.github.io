@@ -7,12 +7,18 @@ use Illuminate\Http\Request;
 
 class MemberController extends Controller
 {
+    public function _construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
+     * @return
      */
     public function index()
     {
-        return view('admin.member.index');
+        $members = Member::all();
+        return view('admin.member', compact('members'));
     }
 
     /**
@@ -28,7 +34,19 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'name' => ['required'],
+            'gender' => ['required'],
+            'phone_number' => ['required'],
+            'address' => ['required'],
+            'email' => ['required'],
+            
+        
+        ]);
+
+        Member::create($request->all());
+
+        return redirect('members');
     }
 
     /**

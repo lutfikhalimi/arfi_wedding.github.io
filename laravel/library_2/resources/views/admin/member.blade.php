@@ -7,12 +7,12 @@
 
 
 @section('content')
-      <div id="controller">
+      <div id="cont">
         <div class="row">
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <a href="#" @click="addData" class="btn btn-sm btn-primary pull-right">New Member</a>
+                <button v-on:click="addData" class="btn btn-sm btn-primary pull-right">Add Member</button>
               </div>
               <!-- /.card-header -->
               <div class="card-body p-0">
@@ -37,7 +37,7 @@
                     <td class="text-center">{{ $member->phone_number }}</td>
                     <td class="text-center">{{ $member->address }}</td>
                     <td class="text-center">{{ $member->email }}</td>
-                      <td class="text-center">  
+                      <td class="text-center">
                             <a href="#" class="btn btn-warning btn-sm">Edit</a>
                             <a href="#" class="btn btn-danger btn-sm">Delete</a>
                       </td>
@@ -49,12 +49,13 @@
             </div>
           </div>
         </div>
+      </div>
         <div class="modal fade" id="modal-default">
         <div class="modal-dialog">
           <div class="modal-content">
             <form method="post" action="actionUrl" autocomplete="off">
-              
-            
+
+
             <div class="modal-header">
               <h4 class="modal-title">Member</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -111,39 +112,39 @@
             </div>
             <!-- /.card -->
 
-      
+
 
 @endsection
 
 @section('js')
   <script type="text/javascript">
-    
-    var controller = new Vue({
-      el: '#controller',
+
+    const app = new Vue({
+      el: '#cont',
       data: {
         data: {},
         actionUrl: '{{ url('members') }}'
       },
       mounted: function() {
-        
+
       },
       methods: {
-        addData() {
+        addData: function() {
+          // alert('hai');
           this.data = {};
           this.actionUrl = '{{ url('members') }}';
-          $('#modal-default').modal(); 
-        },
-        editData(data) {
-          this.data = data;
-          this.actionUrl = '{{ url('members') }}'+'/'+data.id;
-          $('#modal-default').modal(); 
-        },
-        deleteData() {
-          
+          $('#modal-default').modal();
         }
-      }
+        // editData(data) {
+        //   this.data = data;
+        //   this.actionUrl = '{{ url('members') }}'+'/'+data.id;
+        //   $('#modal-default').modal();
+        // },
+        // deleteData() {
+
+        // }
+      },
     });
-    
+
   </script>
 @endsection
-

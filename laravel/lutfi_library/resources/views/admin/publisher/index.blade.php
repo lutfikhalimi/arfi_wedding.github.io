@@ -1,6 +1,11 @@
 @extends('layouts.admin')
 @section('header', 'Publisher')
 
+@section('css')
+<link rel="stylesheet" href="{{ asset('assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}} ">
+<link rel="stylesheet" href="{{ asset('assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
+<link rel="stylesheet" href="{{ asset('assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
+@endsection
 
 @section('content')
 <style>
@@ -16,8 +21,8 @@
                 <a href="{{ url('publishers/create')}}" class="btn btn-sm btn-primary pull-right">New Publisher</a>
               </div>
               <!-- /.card-header -->
-              <div class="card-body">
-                <table class="table table-bordered">
+              <div class="card-body p-2">
+                <table id="datatable" class="table table-striped table-bordered">
                   <thead>
                     <tr>
                       <th style="width: 10px">No</th>
@@ -53,18 +58,43 @@
                     @endforeach
                   </tbody>
                 </table>
-              </div>
-              <!-- /.card-body -->
-              <div class="card-footer clearfix">
-                <ul class="pagination pagination-sm m-0 float-right">
-                  <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-                </ul>
-              </div>
-            </div>
-            <!-- /.card -->
+              </div>   
 
 @endsection
+
+
+@section('js')
+
+<script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+<script src="{{ asset('assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+<script src="{{ asset('assets/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
+<script src="{{ asset('assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+<script src="{{ asset('assets/plugins/datatables-buttons/js/dataTables.buttons.min.js')}}"></script>
+<script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.bootstrap4.min.js')}}"></script>
+<script src="{{ asset('assets/plugins/jszip/jszip.min.js')}}"></script>
+<script src="{{ asset('assets/plugins/pdfmake/pdfmake.min.js')}}"></script>
+<script src="{{ asset('assets/plugins/pdfmake/vfs_fonts.js')}}"></script>
+<script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
+<script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
+<script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
+
+<script type="text/javascript">
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+
+</script>
+@endsection
+

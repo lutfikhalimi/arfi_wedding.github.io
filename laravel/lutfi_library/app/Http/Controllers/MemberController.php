@@ -69,7 +69,18 @@ class MemberController extends Controller
      */
     public function update(Request $request, Member $member)
     {
-        //
+        $this->validate($request, [
+            'name' => ['required'],
+            'gender' => ['required'],
+            'phone_number' => ['required'],
+            'address' => ['required'],
+            'email' => ['required'],
+
+        ]);
+
+        $member->update($request->all());
+
+        return redirect('members');
     }
 
     /**
@@ -77,6 +88,6 @@ class MemberController extends Controller
      */
     public function destroy(Member $member)
     {
-        //
+        $member->delete();
     }
 }

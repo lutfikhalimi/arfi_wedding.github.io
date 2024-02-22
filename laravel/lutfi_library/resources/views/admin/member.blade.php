@@ -170,13 +170,13 @@ var controller = new Vue({
                 // console.log(id)
                 // this.actionUrl = "{{ url('members') }}"+'/'+id;
                 if (confirm("Are you sure ?")) {
-                    $(event.target).perents('tr').remove();
+                    $(event.target).parents('tr').remove();
                     axios.post(this.actionUrl+'/'+id, {_method: 'DELETE'}).then(response => {
                         alert('Data has been removed');
                 });
             }
         },
-        submitFrom(event, id){
+        submitForm(event, id){
             event.preventDefault();
             const _this = this;
             var actionUrl = ! this.editStatus ? this.actionUrl : this.actionUrl+'/'+id;

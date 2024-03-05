@@ -1,26 +1,42 @@
 <?php
 namespace App\Http\Controllers;
 
+use DB;
 use App\Models\Books;
+use App\katalog;
 use App\Models\Member;
-use App\Models\Author;
-use App\Models\Catalog;
 use App\Models\Publisher;
+use App\Pengarang;
 use App\Models\Transaction;
-use App\Models\TransactionDetail;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function home()
     {
-        $this->middleware('auth');
+        $total_anggota = Member::count();
+        $total_buku = Books::count();
+        $total_peminjaman = Transaction::whereMonth('tgl_pinjam', date('m'))->count();
+        $total_penerbit =  Publisher::count();
+
+        $data_donut = Books::select(DB::raw("COUNT(id_penerbit)as total"))->groupBy('id_penerbit')->orderBy('id_penerbit','asc')->pluck('total');
+        $label_donut = Publisher::orderBy('id_penerbit','asc')->join('bukus', 'bukus.id_penerbit', '=', 'penerbits.id')->groupBy('nama_penerbit')->pluck('nama_penerbit');
+        $label_bar = ['Peminjaman'];
+        $data_bar = [];
+
+        foreach($label_bar as $key => $value) {
+            $data_bar[$key]['label']=$label_bar[$key];
+            $data_bar[$key]['backgroundColor']= 'rgba(60, 141, 188, 0.9)';
+            $data_month = [];
+
+            foreach(range(1,12) as $month) {
+                $data_month[]= Transaction::select(DB::raw("COUNT(*) as total"))->whereMonth('tgl_pinjam', $month)->first()->total;
+        }
+        $data_bar[$key]['data']=$data_month;
     }
+    return view('admin.home', compact('total_buku', 'total_anggota', 'total_peminjaman', 'total_penerbit', 'data_donut', 'label_donut'));
+
+}
 
     /**
      * Show the application dashboard.
@@ -66,6 +82,6 @@ class HomeController extends Controller
             ->get(); */
 
         //return $data2;
-        return view('home');
+        // return view('home');
     }
 }

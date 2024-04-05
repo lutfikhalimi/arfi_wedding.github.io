@@ -9,7 +9,11 @@ class Transaction extends Model
 {
     use HasFactory;
 
+    public function member(){
+        return $this->belongsTo('App\Models\Member', 'id');
+    }
+
     public function transactions(){
-        return $this->hasMany('App\Models\Transactions', 'member_id');
+        return $this->hasOne('App\Models\TransactionsDetail', 'transaction_id');
     }
 }

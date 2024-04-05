@@ -6,7 +6,6 @@ use App\Models\Publisher;
 use Faker\Factory as Faker;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-
 class PublisherSeeder extends Seeder
 {
     /**

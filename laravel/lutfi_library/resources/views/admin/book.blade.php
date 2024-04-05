@@ -164,7 +164,9 @@ var app = new Vue({
                     })
                     .catch(function(error) {
                         console.log(error);
-                        alert('Failed to delete book.');
+                        alert('Tidak bisa dihapus. Sedang digunakan');
+                        // alert(error.response.data.massage);
+
                     });
             }
         },

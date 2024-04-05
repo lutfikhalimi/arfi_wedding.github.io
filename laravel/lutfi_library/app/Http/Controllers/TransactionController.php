@@ -18,6 +18,20 @@ class TransactionController extends Controller
     /**
      * Show the form for creating a new resource.
      */
+
+     public function api()
+    {
+        $transactions = Transaction::with('member')->get();
+        dd($transactions);
+        foreach($transactions as $transaction){
+            $transaction->name = $transaction->member->name;
+        }
+        $datatables = Datatables()->of($transactions)->addIndexColumn();
+
+        return $datatables->make(true);
+
+
+    }
     public function create()
     {
         //
@@ -28,7 +42,7 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**

@@ -7,6 +7,7 @@ use App\Models\Author;
 use App\Models\Catalog;
 use App\Models\Books;
 use App\Models\Publisher;
+use App\Models\TransactionDetail;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
@@ -38,21 +39,22 @@ class BookController extends Controller
     public function create(Request $request)
     {
         // Validasi data yang diterima dari form
-        $validatedData = $request->validate([
-        'isbn' => 'required|numeric',
-        'title' => 'required|string',
-        'year' => 'required|numeric',
-        'publisher_id' => 'required|exists:publishers,id',
-        'author_id' => 'required|exists:authors,id',
-        'catalog_id' => 'required|exists:catalogs,id',
-        'qty' => 'required|numeric',
-        'price' => 'required|numeric',
-    ]);
+    //     $validatedData = $request->validate([
+    //     'isbn' => 'required|numeric',
+    //     'title' => 'required|string',
+    //     'year' => 'required|numeric',
+    //     'publisher_id' => 'required|exists:publishers,id',
+    //     'author_id' => 'required|exists:authors,id',
+    //     'catalog_id' => 'required|exists:catalogs,id',
+    //     'qty' => 'required|numeric',
+    //     'price' => 'required|numeric',
+    // ]);
 
-    // Simpan data buku baru ke dalam database
-    Books::create($validatedData);
+    // // Simpan data buku baru ke dalam database
+    //     Books::create($validatedData);
 
-    // Redirect atau kirim respon sukses sesuai kebutuhan aplikasi Anda
+    // // Redirect atau kirim respon sukses sesuai kebutuhan aplikasi Anda
+    //     return redirect('/books');
     }
 
     /**
@@ -60,7 +62,22 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'isbn' => 'required|numeric',
+            'title' => 'required|string',
+            'year' => 'required|numeric',
+            'publisher_id' => 'required|exists:publishers,id',
+            'author_id' => 'required|exists:authors,id',
+            'catalog_id' => 'required|exists:catalogs,id',
+            'qty' => 'required|numeric',
+            'price' => 'required|numeric',
+        ]);
+    
+        // Simpan data buku baru ke dalam database
+            Books::create($validatedData);
+    
+        // Redirect atau kirim respon sukses sesuai kebutuhan aplikasi Anda
+            return redirect('/books');
     }
 
     /**
@@ -100,6 +117,7 @@ class BookController extends Controller
     $book->update($validatedData);
 
     // Redirect atau kirim respon sukses sesuai kebutuhan aplikasi Anda
+    return redirect('/books');
     }
 
     /**
@@ -107,6 +125,10 @@ class BookController extends Controller
      */
     public function destroy(Books $book)
     {
+        // $transaction=TransactionDetail::where("book_id",$book->id)->first();
+        // if($transaction){
+        //     throw new ("Tidak Bisa Dihapus karena Sedang Digunakan");
+        // }
         $book->delete();
     }
 }

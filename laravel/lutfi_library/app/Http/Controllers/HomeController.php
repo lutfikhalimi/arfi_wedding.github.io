@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
-use DB;
+
 use App\Models\Books;
 use App\katalog;
 use App\Models\Member;
@@ -9,32 +9,33 @@ use App\Models\Publisher;
 use App\Pengarang;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
+use Illuminate\Support\facades\DB;
 
 class HomeController extends Controller
 {
     public function home()
     {
-        $total_anggota = Member::count();
-        $total_buku = Books::count();
-        $total_peminjaman = Transaction::whereMonth('tgl_pinjam', date('m'))->count();
-        $total_penerbit =  Publisher::count();
+    //     $total_anggota = Member::count();
+    //     $total_buku = Books::count();
+    //     $total_peminjaman = Transaction::whereMonth('date_start', date('m'))->count();
+    //     $total_penerbit =  Publisher::count();
 
-        $data_donut = Books::select(DB::raw("COUNT(id_penerbit)as total"))->groupBy('id_penerbit')->orderBy('id_penerbit','asc')->pluck('total');
-        $label_donut = Publisher::orderBy('id_penerbit','asc')->join('bukus', 'bukus.id_penerbit', '=', 'penerbits.id')->groupBy('nama_penerbit')->pluck('nama_penerbit');
-        $label_bar = ['Peminjaman'];
-        $data_bar = [];
+    //     $data_donut = Books::select(DB::raw("COUNT(publisher_id)as total"))->groupBy('publisher_id')->orderBy('publisher_id','asc')->pluck('total');
+    //     $label_donut = Publisher::orderBy('publisher_id','asc')->join('books', 'books.publisher_id', '=', 'publishers.id')->groupBy('name', 'publisher.id')->pluck('name');
+    //     $label_bar = ['Peminjaman'];
+    //     $data_bar = [];
 
-        foreach($label_bar as $key => $value) {
-            $data_bar[$key]['label']=$label_bar[$key];
-            $data_bar[$key]['backgroundColor']= 'rgba(60, 141, 188, 0.9)';
-            $data_month = [];
+    //     foreach($label_bar as $key => $value) {
+    //         $data_bar[$key]['label']=$label_bar[$key];
+    //         $data_bar[$key]['backgroundColor']= 'rgba(60, 141, 188, 0.9)';
+    //         $data_month = [];
 
-            foreach(range(1,12) as $month) {
-                $data_month[]= Transaction::select(DB::raw("COUNT(*) as total"))->whereMonth('tgl_pinjam', $month)->first()->total;
-        }
-        $data_bar[$key]['data']=$data_month;
-    }
-    return view('admin.home', compact('total_buku', 'total_anggota', 'total_peminjaman', 'total_penerbit', 'data_donut', 'label_donut'));
+    //         foreach(range(1,12) as $month) {
+    //             $data_month[]= Transaction::select(DB::raw("COUNT(*) as total"))->whereMonth('date_start', $month)->first()->total;
+    //     }
+    //     $data_bar[$key]['data']=$data_month;
+    // }
+    // return view('home', compact('total_buku', 'total_anggota', 'total_peminjaman', 'total_penerbit', 'data_donut', 'label_donut'));
 
 }
 
@@ -45,6 +46,28 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $total_anggota = Member::count();
+        $total_buku = Books::count();
+        $total_peminjaman = Transaction::whereMonth('date_start', date('m'))->count();
+        $total_penerbit =  Publisher::count();
+
+        $data_donut = Books::select(DB::raw("COUNT(publisher_id)as total"))->groupBy('publisher_id')->orderBy('publisher_id','asc')->pluck('total');
+        $label_donut = Publisher::orderBy('publisher_id','asc')->join('books', 'books.publisher_id', '=', 'publishers.id')->groupBy('name')->pluck('name');
+        $label_bar = ['Peminjaman'];
+        $data_bar = [];
+
+        foreach($label_bar as $key => $value) {
+            $data_bar[$key]['label']=$label_bar[$key];
+            $data_bar[$key]['backgroundColor']= 'rgba(60, 141, 188, 0.9)';
+            $data_month = [];
+
+            foreach(range(1,12) as $month) {
+                $data_month[]= Transaction::select(DB::raw("COUNT(*) as total"))->whereMonth('date_start', $month)->first()->total;
+        }
+        $data_bar[$key]['data']=$data_month;
+    }
+    return view('home', compact('total_buku', 'total_anggota', 'total_peminjaman', 'total_penerbit', 'data_donut', 'label_donut'));
+
         //$members = Member::all();
         //$members = Member::with('user')->get();
         //$books = Books::with('publisher')->get();

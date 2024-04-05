@@ -9,7 +9,8 @@ class Books extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['isbn', 'title', 'publisher', 'author', 'catalog', 'qty', 'price'];
+    // protected $fillable = ['isbn', 'title', 'publisher', 'author', 'catalog', 'qty', 'price', 'year'];
+    protected $guarded=[];
     // public function publisher()
     // {
     //     return $this->belongsTo('App\Models\Publisher', 'publisher_id');

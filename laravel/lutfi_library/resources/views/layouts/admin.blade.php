@@ -179,7 +179,7 @@
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
       <img src="{{ asset( 'assets/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <span class="brand-text font-weight-light">Perpustakaan</span>
     </a>
 
     <!-- Sidebar -->
@@ -263,7 +263,7 @@
             <a href="{{url('transactions')}}" class="nav-link {{ request()-> is('transactions') ? 'active' : '' }}">
               <i class="nav-icon fas fa-hand-holding-usd"></i>
               <p>
-                Transaction
+                Peminjaman
               </p>
             </a>
           </li>

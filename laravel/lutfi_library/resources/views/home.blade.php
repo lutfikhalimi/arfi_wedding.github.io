@@ -10,7 +10,7 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>{{ $total_books }}</h3>
+                <h3>{{ $total_buku }}</h3>
                   <p>Total Buku</p>
               </div>
               <div class="icon">
@@ -61,7 +61,7 @@
             </div>
           </div>
 
-          <div class="col-lg-3 col-6">
+          <!-- <div class="col-lg-3 col-6">
             <div class="card card-danger">
               <div class="card-header">
                 <h3 class="card-title">Grafik Penerbit</h3>
@@ -79,8 +79,8 @@
               </div>
             </div>
           </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
+           ./col -->
+          <!-- <div class="col-lg-3 col-6">
             <div class="card card-success">
               <div class="card-header">
                 <h3 class="card-title">Grafik Peminjaman</h3>
@@ -99,7 +99,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> --> 
 </div>
 
 @endsection
